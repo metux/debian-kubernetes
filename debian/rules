@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+export PATH := /usr/lib/go-1.11/bin:$(PATH)
+
+opt_no_act :=
+ifneq (,$(findstring n,$(MAKEFLAGS)))
+	opt_no_act := --no-act
+endif
+
+%:
+	+dh --parallel $(opt_no_act) $@
+
+maint-check:
+	find -name Makefile | xargs chmod ugo-x
+	find -name "*.html" | xargs chmod ugo-x
+	find -name "OWNERS" | xargs chmod ugo-x

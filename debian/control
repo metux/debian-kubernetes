@@ -1,0 +1,83 @@
+Source: k8s-git
+Section: devel
+Priority: optional
+Maintainer: Enrico Weigelt, metux IT consult <info@metux.net>
+Build-Depends: debhelper (>= 7.4.10),
+               golang-any (>= 1.11~) | golang-go (>= 1.11~),
+               golang-1.11,
+               rsync
+Standards-Version: 3.9.8
+
+Package: k8s-meta-client
+Architecture: any
+Depends: k8s-kubectl
+Description: Kubernetes - client metapackage
+
+Package: k8s-meta-node
+Architecture: any
+Depends: k8s-kubectl, k8s-kubeadm, k8s-kubelet, k8s-kube-proxy
+Description: Kubernetes - node
+
+Package: k8s-meta-server
+Architecture: any
+Depends: k8s-kubectl,
+         k8s-kubeadm,
+         k8s-kubelet,
+         k8s-kube-proxy,
+         k8s-hyperkube,
+         k8s-kube-controller-manager,
+         k8s-cloud-controller-manager,
+         k8s-apiextensions-apiserver,
+         k8s-kube-scheduler,
+         k8s-mounter
+Description: Kubernetes - server
+
+Package: k8s-kubectl
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kubectl
+
+Package: k8s-kubeadm
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kubeadm
+
+Package: k8s-kube-proxy
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kube-proxy
+
+Package: k8s-kubelet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kubelet
+
+Package: k8s-hyperkube
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - hyperkube
+
+Package: k8s-kube-controller-manager
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kube-controller-manager
+
+Package: k8s-cloud-controller-manager
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - cloud-controller-manager
+
+Package: k8s-apiextensions-apiserver
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - apiextensions-apiserver
+
+Package: k8s-kube-scheduler
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - kube-scheduler
+
+Package: k8s-mounter
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kubernetes - mounter
