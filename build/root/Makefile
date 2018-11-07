@@ -605,3 +605,23 @@ else
 bazel-release:
 	bazel build //build/release-tars
 endif
+
+.PHONY: install
+
+INSTALL_LIBEXEC := \
+	cloud-controller-manager \
+	hyperkube \
+	kube-apiserver \
+	kube-controller-manager \
+	kube-proxy \
+	kube-scheduler \
+	mounter \
+	kubeadm \
+	kubelet \
+	apiextensions-apiserver \
+	kubectl
+
+INSTALL_SBIN_SRC := $(addprefix _output/local/bin/linux/*/,$(INSTALL_LIBEXEC))
+
+install:
+	install -D -m ugo+rx,u+w $(INSTALL_LIBEXEC) -t $(DESTDIR)/usr/libexec/k8s
